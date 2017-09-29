@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\newcross_admin\Plugin\Condition;
+namespace Drupal\MODULE\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionInterface;
 use Drupal\Core\Condition\ConditionPluginBase;
@@ -12,8 +12,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Plugin to select nid.
  *
  * @Condition(
- *   id = "newcross_admin",
- *   label = @Translation("Page"),
+ *   id = "block_nid",
+ *   label = @Translation("Node ID"),
  *   context = {
  *     "node" = @ContextDefinition("entity:node", required = FALSE, label = @Translation("Node"))
  *   }
@@ -62,17 +62,10 @@ class Nid extends ConditionPluginBase implements ConditionInterface, ContainerFa
 
     $form['cnid'] = [
       '#type' => 'entity_autocomplete',
-      '#title' => $this->t('Pages'),
+      '#title' => $this->t('Nodes'),
       '#default_value' => $entity,
       '#selection_settings' => [
-        'target_bundles' => [
-          'landing_page',
-          'page',
-          'job',
-          'article',
-          'insight',
-          'branch',
-        ],
+        'target_bundles' => [],
       ],
       '#target_type' => 'node',
       '#tags' => TRUE,
